@@ -88,18 +88,42 @@
             color: #000;
 
         }
+
+        progress {
+            background-color: #eee;
+            border-radius: 2px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+        }
+
         </style>
 </head>
 
 <body>
-<div id='outer' style="width: 1000px; height:800px; margin: 0px auto; margin-top:20px; padding:10px">
-    <div id="main" style="width:1000px; height:200px; margin: 0px auto; ">
-        <div id="div1"></div>
-        <div id="div2"></div>
-        <div id="div3"></div>
-        <div id="div4"></div>
-    </div>
-</div>
+<table>
+<thead>
+
+</thead>
+
+<tbody>
+<tr>
+    <td><div id="div1"></div></td>
+    <td><div id="div2"></div></td>
+</tr>
+<tr>
+    <td>Graduation Rate: <progress value="22" max="100"></progress></td>
+    <td>Attendance Rate: <progress value="66" max="100"></progress></td>
+</tr>
+<tr>
+    <td>Graduation Rate: <progress value="78" max="100"></progress></td>
+    <td>Attendance Rate: <progress value="10" max="100"></progress></td>
+</tr>
+<tr>
+    <td style="font-size: 3em">68%</td>
+    <td style="font-size: 3em">44%</td>
+</tr>
+</tbody>
+</table>
+
 <script language="JavaScript">
 function radialProgress(parent) {
     var _data=null,
