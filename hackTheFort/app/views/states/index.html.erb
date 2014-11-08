@@ -96,7 +96,7 @@
                         google.maps.event.addListener( counties, 'click', function( evnt ) {
                             
                             console.log( arguments );
-                            //document.location.href = '/' + evnt.row[ 'County Name' ].value
+                            document.location.href = '/counties/' + evnt.row[ 'County Name' ].value + '/?lat=' + evnt.latLng.B + '&lng=' + evnt.latLng.k
                             //console.log( '/name=' + evnt.row[ 'County Name' ].value );
                             console.log( '/?lat=' + evnt.latLng.B + '&lng=' + evnt.latLng.k );
                             

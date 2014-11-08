@@ -25,4 +25,7 @@ Rails.application.routes.draw do
 
   resources :statistics
   resources :states
+  resources :counties
+
+  match 'counties/(:id)' => 'counties#show', via: ['get', 'post'], :constraints => { :id => /[0-9A-Za-z\-\.]+/ }
 end
