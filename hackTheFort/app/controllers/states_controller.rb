@@ -5,7 +5,6 @@
       def index
         @states = State.all
 
-        render states_path
       end
 
       # GET /states/1
@@ -16,15 +15,21 @@
         render json: @state
       end
 
+      def new
+        @state = State.new
+
+        render states_path
+      end
+
       # POST /states
       # POST /states.json
       def create
         @state = State.new(state_params)
 
         if @state.save
-          render json: @state, status: :created, location: @state
+          redirect states_path
         else
-          render json: @state.errors, status: :unprocessable_entity
+          redirect states_path
         end
       end
 
