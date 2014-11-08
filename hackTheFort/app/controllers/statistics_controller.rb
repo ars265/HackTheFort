@@ -1,7 +1,7 @@
 class StatisticsController < ActionController::API
   
 	def index
-		render "index"
+		render "show"
 	end
 
 	def show

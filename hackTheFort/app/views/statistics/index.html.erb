@@ -123,7 +123,7 @@
 
         </style>
 </head>
-<h1>Showing for District <%= params[:id] %></h1>
+<h1 id="titleText"></h1>
 <body>
 <table id="schoolTable">
 <thead id="schoolTableHeader">
@@ -136,17 +136,14 @@
     <td><div id="div1"></div></td>
     <td><div id="div2"></div></td>
 </tr>
-<tr>
-    <td>Graduation Rate: <progress value="22" max="100"></progress></td>
-    <td>Graduation Rate: <progress value="66" max="100"></progress></td>
+<tr id="gradRow">
+
 </tr>
-<tr>
-    <td>Attendance Rate: <progress value="78" max="100"></progress></td>
-    <td>Attendance Rate: <progress value="10" max="100"></progress></td>
+<tr id="attendanceRow">
+    
 </tr>
-<tr>
-    <td style="font-size: 3em">68%</td>
-    <td style="font-size: 3em">44%</td>
+<tr id="istepRow">
+
 </tr>
 </tbody>
 </table>
@@ -155,9 +152,27 @@
 schoolArr = [];
 
 $(document).ready(function() {
+    getCorpName();
     getSchools();
+    getISTEP();
     console.log(schoolArr);
 });
+
+function getCorpName(){
+    $.ajax({
+        datatype: "json",
+        url: "http://indianalearns.info/api/v1/corporations",
+        success: function(data){
+            data.forEach(function(value, index, ar){
+                if(value.id == '<%= params[:id] %>'){
+                    var t = document.createTextNode("Statistics for " + value.name);
+                    var title = document.getElementById("titleText");
+                    title.appendChild(t);
+                }
+            });
+        }
+    })
+}
 
 function getSchools(){
     $.ajax({
@@ -167,7 +182,9 @@ function getSchools(){
             data.forEach(function(value, index, ar){
                 if(value.corp_id == '<%= params[:id] %>'){
                     schoolArr.push(value);
-                    getSchoolReports(value.id);
+                    getSchoolReports(value.id, "2011");
+                    getSchoolGrad(value.id);
+                    getISTEP(value.id, "2011");
                     var tr = document.getElementById('schoolTable').tHead.children[0];
                     var th = document.createElement("th");
                     th.innerHTML = value.name;
@@ -178,12 +195,66 @@ function getSchools(){
     });
 }
 
-function getSchoolReports(schoolId){
+function getISTEP(schoolId, year){
     $.ajax({
         datatype: "json",
-        url: "http://indianalearns.info/api/v1/reports/school/attendance?school_id=" + schoolId,
+        url: "http://indianalearns.info/api/v1/reports/school/public_istep?school_id=" + schoolId + "&group=total&year=" + year,
         success: function(data){
+            var istepRow = document.getElementById("istepRow");
 
+            if(typeof data[0] !== 'undefined' && data.length > 0){
+                var text = document.createTextNode((data[0].pass_both_percent * 100).toFixed(0));
+            } else {
+                var text = document.createTextNode("No Data");
+            }
+            
+            var td = document.createElement("td");
+            td.setAttribute("style", "'font-size: 2em'");
+            td.appendChild(text);
+            istepRow.appendChild(td);
+        }
+    })
+}
+
+function getSchoolReports(schoolId, year){
+    $.ajax({
+        datatype: "json",
+        url: "http://indianalearns.info/api/v1/reports/school/attendance?school_id=" + schoolId + "&year=" + year,
+        success: function(data){
+            var td = document.createElement("td");
+            var progressBar = document.createElement("progress");
+            if(typeof data[0] !== 'undefined' && data.length > 0){
+                progressBar.setAttribute("value", "" + data[0].attendance);
+            } else {
+                progressBar.setAttribute("value", "" + "0");
+            }
+            progressBar.setAttribute("max", "100");
+            var tr = document.getElementById('attendanceRow');
+            td.innerHTML = "Attendance %: "
+            td.appendChild(progressBar);
+            tr.appendChild(td);
+        }
+    })
+}
+
+function getSchoolGrad(schoolId){
+    $.ajax({
+        datatype: "json",
+        url: "http://indianalearns.info/api/v1/reports/school/graduation_rates?school_id=" + schoolId + "&group=total",
+        success: function(data){
+            var td = document.createElement("td");
+            var progressBar = document.createElement("progress");
+            if(typeof data[0] !== 'undefined' && data.length > 0){
+                var rate = data[0].graduation_rate * 100;
+                progressBar.setAttribute("value", "" + rate);
+            } else {
+                progressBar.setAttribute("value", "" + "0");
+            }
+            progressBar.setAttribute("max", "100");
+            var tr = document.getElementById('gradRow');
+            td.innerHTML = "Graduation %: "
+            td.appendChild(progressBar);
+            tr.appendChild(td);
         }
     })
 }
