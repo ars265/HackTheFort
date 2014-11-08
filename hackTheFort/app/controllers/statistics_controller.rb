@@ -4,4 +4,9 @@ class StatisticsController < ActionController::API
 		render "index"
 	end
 
+	def show
+		corpId = params[:id]
+		render "index"
+	end
+
 end
