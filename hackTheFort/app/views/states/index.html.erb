@@ -95,10 +95,10 @@
                         //add a listener to the counties layer for the click
                         google.maps.event.addListener( counties, 'click', function( evnt ) {
                             
-                            console.log( arguments );
+                            //console.log( arguments );
                             document.location.href = '/counties/' + evnt.row[ 'County Name' ].value + '/?lat=' + evnt.latLng.B + '&lng=' + evnt.latLng.k
                             //console.log( '/name=' + evnt.row[ 'County Name' ].value );
-                            console.log( '/?lat=' + evnt.latLng.B + '&lng=' + evnt.latLng.k );
+                            //console.log( '/?lat=' + evnt.latLng.B + '&lng=' + evnt.latLng.k );
                             
                             //evnt.stop();
                             
