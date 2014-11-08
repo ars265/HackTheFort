@@ -1,6 +1,9 @@
 module Api
   module V1
     class CountiesController < ApplicationController
+
+      require 'open-uri'
+
       # GET /counties
       # GET /counties.json
       def index
