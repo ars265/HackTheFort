@@ -125,14 +125,14 @@
 </head>
 <h1>Showing for District <%= params[:id] %></h1>
 <body>
-<table>
-<thead>
-    <th>Blackhawk Christian School</th>
-    <th>Jefferson Middle School</th>
+<table id="schoolTable">
+<thead id="schoolTableHeader">
+    <tr>
+    </tr>
 </thead>
 
 <tbody>
-<tr>
+<tr id="">
     <td><div id="div1"></div></td>
     <td><div id="div2"></div></td>
 </tr>
@@ -167,20 +167,29 @@ function getSchools(){
             data.forEach(function(value, index, ar){
                 if(value.corp_id == '<%= params[:id] %>'){
                     schoolArr.push(value);
+                    getSchoolReports(value.id);
+                    var tr = document.getElementById('schoolTable').tHead.children[0];
+                    var th = document.createElement("th");
+                    th.innerHTML = value.name;
+                    tr.appendChild(th);
                 }
             });
-
-            getSchoolReports();
         }
     });
 }
 
-function getSchoolReports(){
-    
+function getSchoolReports(schoolId){
+    $.ajax({
+        datatype: "json",
+        url: "http://indianalearns.info/api/v1/reports/school/attendance?school_id=" + schoolId,
+        success: function(data){
+
+        }
+    })
 }
 </script>
 
-<!-- Below is Javascript that I don't know! -->
+<!-- Below is Javascript that I can't understand!!! :) -->
 <script language="JavaScript">
 function radialProgress(parent) {
     var _data=null,
