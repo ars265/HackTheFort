@@ -3,6 +3,8 @@ module Api
     class StatisticsController < ApplicationController
       # GET /statistics
       # GET /statistics.json
+
+      require 'open-uri'
       def index
         @statistics = Statistic.all
 
