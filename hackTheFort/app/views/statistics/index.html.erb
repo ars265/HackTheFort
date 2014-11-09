@@ -6,135 +6,180 @@
     .background {
     fill: #FFFFFF;
     fill-opacity: 0.01;
-}
+    }
 
-.component {
-    fill: #e1e1e1;
-}
+    .component {
+        fill: #e1e1e1;
+    }
 
-.component .label {
-    font-family: Myriad, "Helvetic Neue", Helvetica, Arial;
-    text-anchor: middle;
-    fill: #0000FF;
-}
+    .component .label {
+        font-family: Myriad, "Helvetic Neue", Helvetica, Arial;
+        text-anchor: middle;
+        fill: #0000FF;
+    }
 
-.arc {
-    stroke-weight:0.1;
-    fill: #4e8fff;
-}
-
-
-.arc2 {
-    stroke-weight:0.1;
-    fill: #3660b0;
-}
+    .arc {
+        stroke-weight:0.1;
+        fill: #4e8fff;
+    }
 
 
-.label {
-    font-family:  Myriad, "Helvetic Neue", Helvetica, Arial;
-    text-anchor: middle;
-}
-
-.radial-svg {
-    display: block;
-    margin: 0 auto;
-}
-        #test .arc2 {
-            stroke-weight:0.1;
-            fill: #3660b0;
-        }
-
-        #outer {
-            background:#FFFFFF;
-            border-radius: 5px;
-            color: #000;
-        }
-
-        #div1, #div2, #div3, #div4 {
-            width: 33%;
-            height: 200px;
-            box-sizing: border-box;
-            float: left;
-        }
-
-        #div2 .arc {
-            stroke-weight: 0.1;
-            fill: #f0a417;
-        }
-
-        #div2 .arc2 {
-            stroke-weight: 0.1;
-            fill: #b00d08;
-        }
-
-        #div3 .arc {
-            stroke-weight: 0.1;
-            fill: #1d871b;
-        }
+    .arc2 {
+        stroke-weight:0.1;
+        fill: #3660b0;
+    }
 
 
-        .selectedRadial {
-            border-radius: 3px;
-            background: #f4f4f4;
-            color: #000;
-            box-shadow: 0 1px 5px rgba(0,0,0,0.4);
-            -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.4);
-            border: 1px solid rgba(200,200,200,0.85);
-        }
+    .label {
+        font-family:  Myriad, "Helvetic Neue", Helvetica, Arial;
+        text-anchor: middle;
+    }
 
-        .radial {
-            border-radius: 3px;
-            background: #FFFFFF;
-            color: #000;
+    .radial-svg {
+        display: block;
+        margin: 0 auto;
+    }
+            #test .arc2 {
+                stroke-weight:0.1;
+                fill: #3660b0;
+            }
 
-        }
+            #outer {
+                background:#FFFFFF;
+                border-radius: 5px;
+                color: #000;
+            }
 
-        progress {
-            background-color: #85E87C;
-            border-radius: 2px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-        }
+            #div1, #div2, #div3, #div4 {
+                width: 33%;
+                height: 200px;
+                box-sizing: border-box;
+                float: left;
+            }
 
-        progress::-moz-progress-bar {
-            background-color: #85E87C;
-            border-radius: 2px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-        }
+            #div2 .arc {
+                stroke-weight: 0.1;
+                fill: #f0a417;
+            }
 
-        progress::-webkit-progress-value {
-            background-color: #85E87C;
-            border-radius: 2px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-        }
+            #div2 .arc2 {
+                stroke-weight: 0.1;
+                fill: #b00d08;
+            }
 
-        progress[value<="50"]::-moz-progress-bar {
-            background-color : #FF0000;
-        }
-        progress[value<="50"]::-webkit-progress-value {
-            background-color : #FF0000;
-        }
-        progress[value<="50"] {
-            background-color : #FF0000;
-        }
+            #div3 .arc {
+                stroke-weight: 0.1;
+                fill: #1d871b;
+            }
 
-        .background {
-            margin: auto;
-        }
 
-        </style>
+            .selectedRadial {
+                border-radius: 3px;
+                background: #f4f4f4;
+                color: #000;
+                box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+                -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+                border: 1px solid rgba(200,200,200,0.85);
+            }
+
+            .radial {
+                border-radius: 3px;
+                background: #FFFFFF;
+                color: #000;
+
+            }
+
+            progress {
+                background-color: #85E87C;
+                border-radius: 2px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+            }
+
+            progress::-moz-progress-bar {
+                background-color: #85E87C;
+                border-radius: 2px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+            }
+
+            progress::-webkit-progress-value {
+                background-color: #85E87C;
+                border-radius: 2px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+            }
+
+            .badprogress {
+                background: repeating-linear-gradient(
+                                      45deg,
+                                      #808080,
+                                      #808080 10px,
+                                      #666666 10px,
+                                      #666666 20px
+                                    );
+                border-radius: 2px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+            }
+
+            .badprogress::-moz-progress-bar {
+                background: repeating-linear-gradient(
+                                      45deg,
+                                      #808080,
+                                      #808080 10px,
+                                      #666666 10px,
+                                      #666666 20px
+                                    );
+                border-radius: 2px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+            }
+
+            .badprogress::-webkit-progress-value {
+                background: repeating-linear-gradient(
+                                      45deg,
+                                      #808080,
+                                      #808080 10px,
+                                      #666666 10px,
+                                      #666666 20px
+                                    );
+                border-radius: 2px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+            }
+
+            progress[value<="50"]::-moz-progress-bar {
+                background-color : #FF0000;
+            }
+            progress[value<="50"]::-webkit-progress-value {
+                background-color : #FF0000;
+            }
+            progress[value<="50"] {
+                background-color : #FF0000;
+            }
+
+            .background {
+                margin: auto;
+            }
+
+            </style>
 </head>
-<h1 id="titleText"></h1>
 <body>
-<table id="schoolTable">
-<thead id="schoolTableHeader">
+<h1 id="titleText"></h1>
+Select Year:
+<select id="year">
+    <option>2014</option>
+    <option>2013</option>
+    <option>2012</option>
+    <option>2011</option>
+    <option>2010</option>
+    <option>2009</option>
+</select>
+<table id="schoolTable" style="margin-top: 2em">
+<thead id="schoolTableHeader" style="text-decoration: underline">
     <tr>
     </tr>
 </thead>
 
 <tbody>
 <tr id="">
-    <td><div id="div1"></div></td>
-    <td><div id="div2"></div></td>
+    <!--<td><div id="div1"></div></td>
+    <td><div id="div2"></div></td>-->
 </tr>
 <tr id="gradRow">
 
@@ -150,11 +195,11 @@
 
 <script>
 schoolArr = [];
+var selectedYear = $( "#year option:selected" ).text();
 
 $(document).ready(function() {
     getCorpName();
     getSchools();
-    getISTEP();
     console.log(schoolArr);
 });
 
@@ -182,9 +227,9 @@ function getSchools(){
             data.forEach(function(value, index, ar){
                 if(value.corp_id == '<%= params[:id] %>'){
                     schoolArr.push(value);
-                    getSchoolReports(value.id, "2011");
+                    getSchoolReports(value.id, selectedYear);
                     getSchoolGrad(value.id);
-                    getISTEP(value.id, "2011");
+                    getISTEP(value.id, selectedYear);
                     var tr = document.getElementById('schoolTable').tHead.children[0];
                     var th = document.createElement("th");
                     th.innerHTML = value.name;
@@ -203,13 +248,25 @@ function getISTEP(schoolId, year){
             var istepRow = document.getElementById("istepRow");
 
             if(typeof data[0] !== 'undefined' && data.length > 0){
-                var text = document.createTextNode((data[0].pass_both_percent * 100).toFixed(0));
+                var text = document.createTextNode((data[0].pass_both_percent * 100).toFixed(0) + "%");
             } else {
                 var text = document.createTextNode("No Data");
             }
             
             var td = document.createElement("td");
-            td.setAttribute("style", "'font-size: 2em'");
+            td.style.fontSize = "2em";
+            td.style.textAlign = "right";
+
+            if(data[0] !== 'undefined' && data.length > 0){
+                if((data[0].pass_both_percent * 100) > 68){
+                    td.style.color = "green";
+                } else {
+                    td.style.color = "red";
+                }
+            } else {
+                td.style.color = "grey";
+            }
+
             td.appendChild(text);
             istepRow.appendChild(td);
         }
@@ -226,7 +283,8 @@ function getSchoolReports(schoolId, year){
             if(typeof data[0] !== 'undefined' && data.length > 0){
                 progressBar.setAttribute("value", "" + data[0].attendance);
             } else {
-                progressBar.setAttribute("value", "" + "0");
+                progressBar.setAttribute("value", "" + "100");
+                progressBar.setAttribute("class", "badprogress");
             }
             progressBar.setAttribute("max", "100");
             var tr = document.getElementById('attendanceRow');
