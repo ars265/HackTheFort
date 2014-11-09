@@ -161,8 +161,7 @@
 </head>
 <body>
 <h1 id="titleText"></h1>
-Select Year:
-<select id="year">
+Showing Data For The <select id="year">
     <option>2014</option>
     <option>2013</option>
     <option>2012</option>
@@ -170,6 +169,7 @@ Select Year:
     <option>2010</option>
     <option>2009</option>
 </select>
+School Year.
 <table id="schoolTable" style="margin-top: 2em">
 <thead id="schoolTableHeader" style="text-decoration: underline">
     <tr>
@@ -195,12 +195,17 @@ Select Year:
 
 <script>
 schoolArr = [];
-var selectedYear = $( "#year option:selected" ).text();
+var selectedYear = <%= @year %>
 
 $(document).ready(function() {
+    $("#year").val(selectedYear);
     getCorpName();
     getSchools();
     console.log(schoolArr);
+});
+
+$("#year").on('change', function() {
+    window.location = '<%= statistics_path %>/<%= params[:id] %>?year=' + $( "#year option:selected" ).text();
 });
 
 function getCorpName(){
@@ -306,7 +311,8 @@ function getSchoolGrad(schoolId){
                 var rate = data[0].graduation_rate * 100;
                 progressBar.setAttribute("value", "" + rate);
             } else {
-                progressBar.setAttribute("value", "" + "0");
+                progressBar.setAttribute("value", "" + "100");
+                progressBar.setAttribute("class", "badprogress");
             }
             progressBar.setAttribute("max", "100");
             var tr = document.getElementById('gradRow');
